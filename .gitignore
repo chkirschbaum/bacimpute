@@ -1,0 +1,19 @@
+# Mac 
+.DS_Store
+
+# Python
+__pycache__
+
+# VS Code
+.vscode
+
+# Conda
+conda/
+
+# Nextflow
+.nextflow/
+.nextflow.log*
+
+# Local
+work/
+results*/ 
