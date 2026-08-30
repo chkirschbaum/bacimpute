@@ -1,13 +1,13 @@
-**List of genome assemblies used to create the Prodigal training files:**
+### **List of genome assemblies used to create the Prodigal training files**
 
 **Mycobacterium tuberculosis**: [GCF_000195955.2](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_000195955.2/)
 
 **Neisseria gonorrhoeae**: [GCF_013030075.1](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_013030075.1/)
 
 
-More Prodigal training files are available in the [chewBBACA repository](https://github.com/B-UMMI/chewBBACA/tree/master/CHEWBBACA/prodigal_training_files).
+### **Prodigal training files in chewBBACA**
 
-**Prodigal training files in chewBBACA:**
+More Prodigal training files are available in the [chewBBACA repository](https://github.com/B-UMMI/chewBBACA/tree/master/CHEWBBACA/prodigal_training_files).
 
 **Acinetobacter baumannii**: [GCF_008632635.1](https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_008632635.1/)
 

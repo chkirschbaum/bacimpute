@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Model Test Report</title>
+    <meta charset="utf-8" />   <!--It is necessary to use the UTF-8 encoding with plotly graphics to get e.g. negative signs to render correctly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 0.5rem 0.75rem;
+            text-align: right;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <ul id="navigation">
+    {% for item in navigation %}
+        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+    {% endfor %}
+    </ul>
+
+    <h1>Model Summary</h1>
+    <table>
+        <tbody>
+            <tr>
+                <th>Species</th>
+                <td>{{ model_summary.species }}</td>
+            </tr>
+            <tr>
+                <th>Reference Sequence</th>
+                <td>{{ model_summary.reference }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ model_summary.model }}</td>
+            </tr>
+            <tr>
+                <th>Number of Loci</th>
+                <td>{{ model_summary.n_loci }}</td>
+            </tr>
+            <tr>
+                <th>Minimum Alleles per Locus</th>
+                <td>{{ model_summary.min_alleles }}</td>
+            </tr>
+            <tr>
+                <th>Maximum Alleles per Locus</th>
+                <td>{{ model_summary.max_alleles }}</td>
+            </tr>
+            <tr>
+                <th>Mean Alleles per Locus</th>
+                <td>{{ "%.2f"|format(model_summary.mean_alleles) }}</td>
+            </tr>    
+        </tbody>
+    </table>
+
+    <h1>Test Model on Reference Set</h1>
+    <p><strong>Sequences tested:</strong> {{ train_n_sequences }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Masked</th>
+                <th>Baseline Accuracy (%)</th>
+                <th>Model Accuracy (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in train_accuracy %}
+            <tr>
+                <td>{{ row.threshold }}</td>
+                <td>{{ "%.2f"|format(row.baseline) }}</td>
+                <td>{{ "%.2f"|format(row.model) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ violin_train }}
+
+    <h1>Test Model on Test Set</h1>
+    <p><strong>Sequences tested:</strong> {{ test_n_sequences }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Masked</th>
+                <th>Baseline Accuracy (%)</th>
+                <th>Model Accuracy (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for row in test_accuracy %}
+            <tr>
+                <td>{{ row.threshold }}</td>
+                <td>{{ "%.2f"|format(row.baseline) }}</td>
+                <td>{{ "%.2f"|format(row.model) }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ violin_test }}
+</body>
+</html>
